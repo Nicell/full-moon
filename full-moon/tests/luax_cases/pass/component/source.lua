@@ -1,1 +1,1 @@
-<Component></Component>
+return <Component></Component>

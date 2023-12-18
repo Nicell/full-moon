@@ -219,6 +219,141 @@ define_parser!(ParseTableConstructor, TableConstructor, |_, state| {
     ))
 });
 
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, PartialEq)]
+struct ParseLuaxElement;
+#[cfg(feature = "luax")]
+define_parser!(ParseLuaxElement, LuaxElement, |_, state| {
+    println!("ParseLuaxElement!!!!!!!!!!!!!!");
+    // get opening element
+    let (state, opening_element) = ParseLuaxOpeningElement.parse(state)?;
+
+    println!("opening");
+    // get children, check if self closing using opening_element.self_closing which is an Option<>. 
+    let (state, children) = if opening_element.self_closing.is_some() {
+        (state, Vec::new())
+    } else {
+        println!("not self closing");
+        let (state, children) = ZeroOrMore(ParseLuaxElement).parse(state)?;
+        (state, children)
+        // (state, Vec::new())
+    };
+
+    println!("closing element");
+    // also set the Option<ClosingLuaxElement> to None if self closing
+    let (state, closing_element) = if opening_element.self_closing.is_some() {
+        (state, None)
+    } else {
+        let (state, closing_element) = expect!(state, ParseLuaxClosingElement.parse(state), "expected closing element");
+        (state, Some(closing_element))
+    };
+
+    Ok((
+        state,
+        LuaxElement {
+            opening_element,
+            children,
+            closing_element,
+        },
+    ))
+});
+
+#[cfg(feature = "luax")]
+struct ParseLuaxOpeningElement;
+#[cfg(feature = "luax")]
+define_parser!(ParseLuaxOpeningElement, LuaxOpeningElement, |_, state| {
+    // get opening bracket
+    let (state, opening_bracket) = ParseSymbol(Symbol::LessThan).parse(state)?;
+
+    // get name
+    if let Ok((state, name)) = ParseIdentifier.parse(state) {
+        // get attributes
+        let (state, attributes) = ZeroOrMore(ParseLuaxAttribute).parse(state)?;
+
+        // check if self closing
+        let (state, self_closing) = if let Ok((state, slash)) = ParseSymbol(Symbol::Slash).parse(state) {
+            (state, Some(slash))
+        } else {
+            (state, None)
+        };
+
+        // get closing bracket
+        let (state, closing_bracket) = expect!(state, ParseSymbol(Symbol::GreaterThan).parse(state), "expected '>'");
+
+        Ok((
+            state,
+            LuaxOpeningElement {
+                opening_bracket,
+                name,
+                attributes,
+                self_closing,
+                closing_bracket,
+            },
+        ))
+    } else {
+        return Err(InternalAstError::NoMatch);
+    }
+});
+
+#[cfg(feature = "luax")]
+struct ParseLuaxClosingElement;
+#[cfg(feature = "luax")]
+define_parser!(ParseLuaxClosingElement, LuaxClosingElement, |_, state| {
+    // get opening bracket
+    let (state, opening_bracket) = ParseSymbol(Symbol::LessThan).parse(state)?;
+
+    // get slash
+    let (state, slash) = expect!(state, ParseSymbol(Symbol::Slash).parse(state), "expected '/'");
+
+    // get name
+    let (state, name) = expect!(state, ParseIdentifier.parse(state), "expected name");
+
+    // get closing bracket
+    let (state, closing_bracket) = expect!(state, ParseSymbol(Symbol::GreaterThan).parse(state), "expected '>'");
+
+    Ok((
+        state,
+        LuaxClosingElement {
+            opening_bracket,
+            slash,
+            name,
+            closing_bracket,
+        },
+    ))
+});
+
+#[cfg(feature = "luax")]
+struct ParseLuaxAttribute;
+#[cfg(feature = "luax")]
+define_parser!(ParseLuaxAttribute, LuaxAttribute, |_, state| {
+    // get name
+    let (state, name) = ParseIdentifier.parse(state)?;
+
+    // get equals
+    let (state, equals) = expect!(state, ParseSymbol(Symbol::Equal).parse(state), "expected '='");
+
+    // get opening brace
+    let (state, opening_brace) = expect!(state, ParseSymbol(Symbol::LeftBrace).parse(state), "expected '{'");
+
+    // get value
+    let (state, value) = expect!(state, ParseExpression.parse(state), "expected expression");
+
+    // get closing brace
+    let (state, closing_brace) = expect!(state, ParseSymbol(Symbol::RightBrace).parse(state), "expected '}'");
+
+    Ok((
+        state,
+        LuaxAttribute {
+            name,
+            equals,
+            opening_brace,
+            value,
+            closing_brace,
+        },
+    ))
+});
+
+
 #[derive(Clone, Debug, PartialEq)]
 struct ParseUnaryExpression;
 define_parser!(ParseUnaryExpression, Expression, |_, state| {
@@ -271,11 +406,6 @@ define_parser!(ParsePartExpression, Expression, |_, state| {
     fn parse_value(state: ParserState) -> Result<(ParserState, Expression), InternalAstError> {
         ParseValue.parse(state)
     }
-
-    // #[allow(clippy::result_large_err)]
-    // fn parse_luax(state: ParserState) -> Result<(ParserState, Expression), InternalAstError> {
-    //     ParseLuax.parse(state)
-    // }
 
     #[allow(clippy::result_large_err)]
     fn parse_paren_expression(
@@ -396,13 +526,9 @@ define_parser!(ParseValue, Expression, |_, state| parse_first_of!(state, {
     ParseIfExpression => Expression::IfExpression,
     @#[cfg(feature = "roblox")]
     ParseInterpolatedString => Expression::InterpolatedString,
+    @#[cfg(feature = "luax")]
+    ParseLuaxElement => Expression::LuaxElement,
 }));
-
-// #[derive(Clone, Debug, PartialEq)]
-// struct ParseLuax;
-// define_parser!(ParseLuax, Expression, |_, state| parse_first_of!(state, {
-//     ParseSymbol(Symbol::LessThan) => Expression::Luax,
-// }));
 
 #[derive(Clone, Debug, Default, PartialEq)]
 struct ParseStmt;
@@ -437,45 +563,6 @@ define_parser!(ParsePrefix, Prefix, |_, state| parse_first_of!(state, {
     ParseIdentifier => Prefix::Name,
 }));
 
-// // jsx parser
-// #[derive(Clone, Debug, PartialEq)]
-// struct ParseJSXElement;
-// define_parser!(ParseJSXElement, JSXElement, |_, state| {
-//     let (state, start_bracket) = ParseSymbol(Symbol::LeftBrace).parse(state)?;
-//     let (state, name) = expect!(state, ParseIdentifier.parse(state), "expected name");
-//     let (state, attributes) = ZeroOrMore(ParseJSXAttribute).parse(state)?;
-//     let (state, end_bracket) = expect!(
-//         state,
-//         ParseSymbol(Symbol::RightBrace).parse(state),
-//         "expected '}'"
-//     );
-
-//     let (state, children) = if let Ok((state, start_bracket)) =
-//         ParseSymbol(Symbol::LeftBrace).parse(state)
-//     {
-//         let (state, children) = ZeroOrMore(ParseJSXChild).parse(state)?;
-//         let (state, end_bracket) = expect!(
-//             state,
-//             ParseSymbol(Symbol::RightBrace).parse(state),
-//             "expected '}'"
-//         );
-
-//         (state, Some((start_bracket, children, end_bracket)))
-//     } else {
-//         (state, None)
-//     };
-
-//     Ok((
-//         state,
-//         JSXElement {
-//             start_bracket,
-//             name,
-//             attributes,
-//             end_bracket,
-//             children,
-//         },
-//     ))
-// });
 struct ParseIndex;
 define_parser!(
     ParseIndex,

@@ -1,0 +1,161 @@
+---
+source: full-moon/tests/pass_cases.rs
+expression: ast.nodes()
+input_file: full-moon/tests/luax_cases/pass/component
+---
+stmts: []
+last_stmt:
+  - Return:
+      token:
+        leading_trivia: []
+        token:
+          start_position:
+            bytes: 0
+            line: 1
+            character: 1
+          end_position:
+            bytes: 6
+            line: 1
+            character: 7
+          token_type:
+            type: Symbol
+            symbol: return
+        trailing_trivia:
+          - start_position:
+              bytes: 6
+              line: 1
+              character: 7
+            end_position:
+              bytes: 7
+              line: 1
+              character: 8
+            token_type:
+              type: Whitespace
+              characters: " "
+      returns:
+        pairs:
+          - End:
+              LuaxElement:
+                opening_element:
+                  opening_bracket:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 7
+                        line: 1
+                        character: 8
+                      end_position:
+                        bytes: 8
+                        line: 1
+                        character: 9
+                      token_type:
+                        type: Symbol
+                        symbol: "<"
+                    trailing_trivia: []
+                  name:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 8
+                        line: 1
+                        character: 9
+                      end_position:
+                        bytes: 17
+                        line: 1
+                        character: 18
+                      token_type:
+                        type: Identifier
+                        identifier: Component
+                    trailing_trivia: []
+                  attributes: []
+                  self_closing: ~
+                  closing_bracket:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 17
+                        line: 1
+                        character: 18
+                      end_position:
+                        bytes: 18
+                        line: 1
+                        character: 19
+                      token_type:
+                        type: Symbol
+                        symbol: ">"
+                    trailing_trivia: []
+                children: []
+                closing_element:
+                  opening_bracket:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 18
+                        line: 1
+                        character: 19
+                      end_position:
+                        bytes: 19
+                        line: 1
+                        character: 20
+                      token_type:
+                        type: Symbol
+                        symbol: "<"
+                    trailing_trivia: []
+                  slash:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 19
+                        line: 1
+                        character: 20
+                      end_position:
+                        bytes: 20
+                        line: 1
+                        character: 21
+                      token_type:
+                        type: Symbol
+                        symbol: /
+                    trailing_trivia: []
+                  name:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 20
+                        line: 1
+                        character: 21
+                      end_position:
+                        bytes: 29
+                        line: 1
+                        character: 30
+                      token_type:
+                        type: Identifier
+                        identifier: Component
+                    trailing_trivia: []
+                  closing_bracket:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 29
+                        line: 1
+                        character: 30
+                      end_position:
+                        bytes: 30
+                        line: 1
+                        character: 31
+                      token_type:
+                        type: Symbol
+                        symbol: ">"
+                    trailing_trivia:
+                      - start_position:
+                          bytes: 30
+                          line: 1
+                          character: 31
+                        end_position:
+                          bytes: 31
+                          line: 1
+                          character: 31
+                        token_type:
+                          type: Whitespace
+                          characters: "\n"
+  - ~
+

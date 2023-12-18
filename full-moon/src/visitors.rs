@@ -306,6 +306,13 @@ create_visitor!(ast: {
     #[cfg(feature = "lua54")] {
         visit_attribute => Attribute,
     }
+
+    #[cfg(feature = "luax")] {
+        visit_luax_element => LuaxElement,
+        visit_luax_opening_element => LuaxOpeningElement,
+        visit_luax_closing_element => LuaxClosingElement,
+        visit_luax_attribute => LuaxAttribute,
+    }
 }, token: {
     visit_identifier,
     visit_multi_line_comment,

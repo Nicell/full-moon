@@ -255,6 +255,56 @@ impl Default for TableConstructor {
     }
 }
 
+/// A Luax element
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[display(fmt = "{}{}{}", "opening_element", "join_vec(children)", "display_option(closing_element)")]
+pub struct LuaxElement {
+    #[node(full_range)]
+    opening_element: LuaxOpeningElement,
+    children: Vec<LuaxElement>,
+    closing_element: Option<LuaxClosingElement>,
+}
+
+/// A Luax opening element
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[display(fmt = "{}{}{}{}{}", "opening_bracket", "name", "join_vec(attributes)", "display_option(self_closing)", "closing_bracket")]
+pub struct LuaxOpeningElement {
+    opening_bracket: TokenReference,
+    name: TokenReference,
+    attributes: Vec<LuaxAttribute>,
+    self_closing: Option<TokenReference>,
+    closing_bracket: TokenReference,
+}
+
+/// A Luax closing element
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[display(fmt = "{}{}{}{}", "opening_bracket", "slash", "name", "closing_bracket")]
+pub struct LuaxClosingElement {
+    opening_bracket: TokenReference,
+    slash: TokenReference,
+    name: TokenReference,
+    closing_bracket: TokenReference,
+}
+
+/// A Luax attribute
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[display(fmt = "{}{}{}{}{}", "name", "equals", "opening_brace", "value", "closing_brace")]
+pub struct LuaxAttribute {
+    name: TokenReference,
+    equals: TokenReference,
+    opening_brace: TokenReference,
+    value: Expression,
+    closing_brace: TokenReference,
+}
+
 /// An expression, mostly useful for getting values
 #[derive(Clone, Debug, Display, PartialEq, Node)]
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
@@ -285,6 +335,11 @@ pub enum Expression {
         /// The expression inside the parentheses
         expression: Box<Expression>,
     },
+
+    /// A Luax element
+    #[cfg(feature = "luax")]
+    #[display(fmt = "{}", "_0")]
+    LuaxElement(LuaxElement),
 
     /// A unary operation, such as `#list`
     #[display(fmt = "{unop}{expression}")]

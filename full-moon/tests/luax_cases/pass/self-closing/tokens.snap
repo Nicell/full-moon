@@ -1,7 +1,7 @@
 ---
 source: full-moon/tests/pass_cases.rs
 expression: tokens
-input_file: full-moon/tests/luax_cases/pass/component
+input_file: full-moon/tests/luax_cases/pass/self-closing
 ---
 - start_position:
     bytes: 0
@@ -56,8 +56,8 @@ input_file: full-moon/tests/luax_cases/pass/component
     line: 1
     character: 19
   token_type:
-    type: Symbol
-    symbol: ">"
+    type: Whitespace
+    characters: " "
 - start_position:
     bytes: 18
     line: 1
@@ -68,7 +68,7 @@ input_file: full-moon/tests/luax_cases/pass/component
     character: 20
   token_type:
     type: Symbol
-    symbol: "<"
+    symbol: /
 - start_position:
     bytes: 19
     line: 1
@@ -79,46 +79,24 @@ input_file: full-moon/tests/luax_cases/pass/component
     character: 21
   token_type:
     type: Symbol
-    symbol: /
+    symbol: ">"
 - start_position:
     bytes: 20
     line: 1
     character: 21
   end_position:
-    bytes: 29
+    bytes: 21
     line: 1
-    character: 30
-  token_type:
-    type: Identifier
-    identifier: Component
-- start_position:
-    bytes: 29
-    line: 1
-    character: 30
-  end_position:
-    bytes: 30
-    line: 1
-    character: 31
-  token_type:
-    type: Symbol
-    symbol: ">"
-- start_position:
-    bytes: 30
-    line: 1
-    character: 31
-  end_position:
-    bytes: 31
-    line: 1
-    character: 31
+    character: 21
   token_type:
     type: Whitespace
     characters: "\n"
 - start_position:
-    bytes: 31
+    bytes: 21
     line: 2
     character: 1
   end_position:
-    bytes: 31
+    bytes: 21
     line: 2
     character: 1
   token_type:
