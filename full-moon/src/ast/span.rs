@@ -57,3 +57,25 @@ impl Node for ContainedSpan {
 }
 
 impl Sealed for ContainedSpan {}
+// #[derive(Clone, Debug, PartialEq, Eq, Visit)]
+// #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+// pub struct LuaxSpan {
+//     pub(crate) tokens: (LuaxOpeningElement, LuaxOpeningElement),
+// }
+
+
+// impl LuaxSpan {
+//     /// Creates a contained span from the start and end bounds
+//     pub fn new(start: LuaxOpeningElement, end: LuaxClosedElement) -> Self {
+//         Self {
+//             tokens: (start, end),
+//         }
+//     }
+
+//     /// Returns the start and end bounds in a tuple as references
+//     pub fn tokens(&self) -> (&TokenReference, &TokenReference) {
+//         (&self.tokens.0, &self.tokens.2)
+//     }
+// }
+
+// impl Sealed for LuaxSpan {}

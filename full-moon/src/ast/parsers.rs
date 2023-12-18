@@ -272,6 +272,11 @@ define_parser!(ParsePartExpression, Expression, |_, state| {
         ParseValue.parse(state)
     }
 
+    // #[allow(clippy::result_large_err)]
+    // fn parse_luax(state: ParserState) -> Result<(ParserState, Expression), InternalAstError> {
+    //     ParseLuax.parse(state)
+    // }
+
     #[allow(clippy::result_large_err)]
     fn parse_paren_expression(
         state: ParserState,
@@ -393,6 +398,12 @@ define_parser!(ParseValue, Expression, |_, state| parse_first_of!(state, {
     ParseInterpolatedString => Expression::InterpolatedString,
 }));
 
+// #[derive(Clone, Debug, PartialEq)]
+// struct ParseLuax;
+// define_parser!(ParseLuax, Expression, |_, state| parse_first_of!(state, {
+//     ParseSymbol(Symbol::LessThan) => Expression::Luax,
+// }));
+
 #[derive(Clone, Debug, Default, PartialEq)]
 struct ParseStmt;
 define_parser!(ParseStmt, Stmt, |_, state| parse_first_of!(state, {
@@ -426,6 +437,45 @@ define_parser!(ParsePrefix, Prefix, |_, state| parse_first_of!(state, {
     ParseIdentifier => Prefix::Name,
 }));
 
+// // jsx parser
+// #[derive(Clone, Debug, PartialEq)]
+// struct ParseJSXElement;
+// define_parser!(ParseJSXElement, JSXElement, |_, state| {
+//     let (state, start_bracket) = ParseSymbol(Symbol::LeftBrace).parse(state)?;
+//     let (state, name) = expect!(state, ParseIdentifier.parse(state), "expected name");
+//     let (state, attributes) = ZeroOrMore(ParseJSXAttribute).parse(state)?;
+//     let (state, end_bracket) = expect!(
+//         state,
+//         ParseSymbol(Symbol::RightBrace).parse(state),
+//         "expected '}'"
+//     );
+
+//     let (state, children) = if let Ok((state, start_bracket)) =
+//         ParseSymbol(Symbol::LeftBrace).parse(state)
+//     {
+//         let (state, children) = ZeroOrMore(ParseJSXChild).parse(state)?;
+//         let (state, end_bracket) = expect!(
+//             state,
+//             ParseSymbol(Symbol::RightBrace).parse(state),
+//             "expected '}'"
+//         );
+
+//         (state, Some((start_bracket, children, end_bracket)))
+//     } else {
+//         (state, None)
+//     };
+
+//     Ok((
+//         state,
+//         JSXElement {
+//             start_bracket,
+//             name,
+//             attributes,
+//             end_bracket,
+//             children,
+//         },
+//     ))
+// });
 struct ParseIndex;
 define_parser!(
     ParseIndex,

@@ -88,3 +88,10 @@ fn test_lua53_pass_cases() {
 fn test_lua54_pass_cases() {
     run_test_folder("./tests/lua54_cases/pass", test_pass_case);
 }
+
+#[test]
+#[cfg(feature = "luax")]
+#[cfg_attr(feature = "no-source-tests", ignore)]
+fn test_luax_pass_cases() {
+    run_test_folder("./tests/luax_cases/pass", test_pass_case);
+}
