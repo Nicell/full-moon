@@ -53,47 +53,49 @@ last_stmt:
                         symbol: "<"
                     trailing_trivia: []
                   name:
-                    leading_trivia: []
-                    token:
-                      start_position:
-                        bytes: 8
-                        line: 1
-                        character: 9
-                      end_position:
-                        bytes: 17
-                        line: 1
-                        character: 18
-                      token_type:
-                        type: Identifier
-                        identifier: Component
-                    trailing_trivia:
-                      - start_position:
+                    Name:
+                      leading_trivia: []
+                      token:
+                        start_position:
+                          bytes: 8
+                          line: 1
+                          character: 9
+                        end_position:
                           bytes: 17
                           line: 1
                           character: 18
-                        end_position:
-                          bytes: 18
-                          line: 1
-                          character: 19
                         token_type:
-                          type: Whitespace
-                          characters: " "
-                  attributes:
-                    - name:
-                        leading_trivia: []
-                        token:
-                          start_position:
+                          type: Identifier
+                          identifier: Component
+                      trailing_trivia:
+                        - start_position:
+                            bytes: 17
+                            line: 1
+                            character: 18
+                          end_position:
                             bytes: 18
                             line: 1
                             character: 19
-                          end_position:
-                            bytes: 22
-                            line: 1
-                            character: 23
                           token_type:
-                            type: Identifier
-                            identifier: attr
-                        trailing_trivia: []
+                            type: Whitespace
+                            characters: " "
+                  attributes:
+                    - name:
+                        Name:
+                          leading_trivia: []
+                          token:
+                            start_position:
+                              bytes: 18
+                              line: 1
+                              character: 19
+                            end_position:
+                              bytes: 22
+                              line: 1
+                              character: 23
+                            token_type:
+                              type: Identifier
+                              identifier: attr
+                          trailing_trivia: []
                       equals:
                         leading_trivia: []
                         token:
@@ -204,20 +206,21 @@ last_stmt:
                         symbol: /
                     trailing_trivia: []
                   name:
-                    leading_trivia: []
-                    token:
-                      start_position:
-                        bytes: 29
-                        line: 1
-                        character: 30
-                      end_position:
-                        bytes: 38
-                        line: 1
-                        character: 39
-                      token_type:
-                        type: Identifier
-                        identifier: Component
-                    trailing_trivia: []
+                    Name:
+                      leading_trivia: []
+                      token:
+                        start_position:
+                          bytes: 29
+                          line: 1
+                          character: 30
+                        end_position:
+                          bytes: 38
+                          line: 1
+                          character: 39
+                        token_type:
+                          type: Identifier
+                          identifier: Component
+                      trailing_trivia: []
                   closing_bracket:
                     leading_trivia: []
                     token:

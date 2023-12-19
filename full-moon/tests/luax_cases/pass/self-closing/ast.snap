@@ -53,31 +53,32 @@ last_stmt:
                         symbol: "<"
                     trailing_trivia: []
                   name:
-                    leading_trivia: []
-                    token:
-                      start_position:
-                        bytes: 8
-                        line: 1
-                        character: 9
-                      end_position:
-                        bytes: 17
-                        line: 1
-                        character: 18
-                      token_type:
-                        type: Identifier
-                        identifier: Component
-                    trailing_trivia:
-                      - start_position:
+                    Name:
+                      leading_trivia: []
+                      token:
+                        start_position:
+                          bytes: 8
+                          line: 1
+                          character: 9
+                        end_position:
                           bytes: 17
                           line: 1
                           character: 18
-                        end_position:
-                          bytes: 18
-                          line: 1
-                          character: 19
                         token_type:
-                          type: Whitespace
-                          characters: " "
+                          type: Identifier
+                          identifier: Component
+                      trailing_trivia:
+                        - start_position:
+                            bytes: 17
+                            line: 1
+                            character: 18
+                          end_position:
+                            bytes: 18
+                            line: 1
+                            character: 19
+                          token_type:
+                            type: Whitespace
+                            characters: " "
                   attributes: []
                   self_closing:
                     leading_trivia: []

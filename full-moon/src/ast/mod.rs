@@ -274,7 +274,7 @@ pub struct LuaxElement {
 #[display(fmt = "{}{}{}{}{}", "opening_bracket", "name", "join_vec(attributes)", "display_option(self_closing)", "closing_bracket")]
 pub struct LuaxOpeningElement {
     opening_bracket: TokenReference,
-    name: TokenReference,
+    name: Var,
     attributes: Vec<LuaxAttribute>,
     self_closing: Option<TokenReference>,
     closing_bracket: TokenReference,
@@ -288,7 +288,7 @@ pub struct LuaxOpeningElement {
 pub struct LuaxClosingElement {
     opening_bracket: TokenReference,
     slash: TokenReference,
-    name: TokenReference,
+    name: Var,
     closing_bracket: TokenReference,
 }
 
@@ -298,7 +298,7 @@ pub struct LuaxClosingElement {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 #[display(fmt = "{}{}{}{}{}", "name", "equals", "opening_brace", "value", "closing_brace")]
 pub struct LuaxAttribute {
-    name: TokenReference,
+    name: Var,
     equals: TokenReference,
     opening_brace: TokenReference,
     value: Expression,

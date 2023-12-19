@@ -224,22 +224,17 @@ define_parser!(ParseTableConstructor, TableConstructor, |_, state| {
 struct ParseLuaxElement;
 #[cfg(feature = "luax")]
 define_parser!(ParseLuaxElement, LuaxElement, |_, state| {
-    println!("ParseLuaxElement!!!!!!!!!!!!!!");
     // get opening element
     let (state, opening_element) = ParseLuaxOpeningElement.parse(state)?;
 
-    println!("opening");
     // get children, check if self closing using opening_element.self_closing which is an Option<>. 
     let (state, children) = if opening_element.self_closing.is_some() {
         (state, Vec::new())
     } else {
-        println!("not self closing");
         let (state, children) = ZeroOrMore(ParseLuaxElement).parse(state)?;
         (state, children)
-        // (state, Vec::new())
     };
 
-    println!("closing element");
     // also set the Option<ClosingLuaxElement> to None if self closing
     let (state, closing_element) = if opening_element.self_closing.is_some() {
         (state, None)
@@ -266,7 +261,7 @@ define_parser!(ParseLuaxOpeningElement, LuaxOpeningElement, |_, state| {
     let (state, opening_bracket) = ParseSymbol(Symbol::LessThan).parse(state)?;
 
     // get name
-    if let Ok((state, name)) = ParseIdentifier.parse(state) {
+    if let Ok((state, name)) = ParseVar.parse(state) {
         // get attributes
         let (state, attributes) = ZeroOrMore(ParseLuaxAttribute).parse(state)?;
 
@@ -306,7 +301,7 @@ define_parser!(ParseLuaxClosingElement, LuaxClosingElement, |_, state| {
     let (state, slash) = expect!(state, ParseSymbol(Symbol::Slash).parse(state), "expected '/'");
 
     // get name
-    let (state, name) = expect!(state, ParseIdentifier.parse(state), "expected name");
+    let (state, name) = expect!(state, ParseVar.parse(state), "expected name");
 
     // get closing bracket
     let (state, closing_bracket) = expect!(state, ParseSymbol(Symbol::GreaterThan).parse(state), "expected '>'");
@@ -327,7 +322,7 @@ struct ParseLuaxAttribute;
 #[cfg(feature = "luax")]
 define_parser!(ParseLuaxAttribute, LuaxAttribute, |_, state| {
     // get name
-    let (state, name) = ParseIdentifier.parse(state)?;
+    let (state, name) = ParseVar.parse(state)?;
 
     // get equals
     let (state, equals) = expect!(state, ParseSymbol(Symbol::Equal).parse(state), "expected '='");

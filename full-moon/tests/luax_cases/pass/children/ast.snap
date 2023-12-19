@@ -53,20 +53,21 @@ last_stmt:
                         symbol: "<"
                     trailing_trivia: []
                   name:
-                    leading_trivia: []
-                    token:
-                      start_position:
-                        bytes: 8
-                        line: 1
-                        character: 9
-                      end_position:
-                        bytes: 17
-                        line: 1
-                        character: 18
-                      token_type:
-                        type: Identifier
-                        identifier: Component
-                    trailing_trivia: []
+                    Name:
+                      leading_trivia: []
+                      token:
+                        start_position:
+                          bytes: 8
+                          line: 1
+                          character: 9
+                        end_position:
+                          bytes: 17
+                          line: 1
+                          character: 18
+                        token_type:
+                          type: Identifier
+                          identifier: Component
+                      trailing_trivia: []
                   attributes: []
                   self_closing: ~
                   closing_bracket:
@@ -102,20 +103,21 @@ last_stmt:
                             symbol: "<"
                         trailing_trivia: []
                       name:
-                        leading_trivia: []
-                        token:
-                          start_position:
-                            bytes: 19
-                            line: 1
-                            character: 20
-                          end_position:
-                            bytes: 24
-                            line: 1
-                            character: 25
-                          token_type:
-                            type: Identifier
-                            identifier: Child
-                        trailing_trivia: []
+                        Name:
+                          leading_trivia: []
+                          token:
+                            start_position:
+                              bytes: 19
+                              line: 1
+                              character: 20
+                            end_position:
+                              bytes: 24
+                              line: 1
+                              character: 25
+                            token_type:
+                              type: Identifier
+                              identifier: Child
+                          trailing_trivia: []
                       attributes: []
                       self_closing:
                         leading_trivia: []
@@ -181,20 +183,21 @@ last_stmt:
                         symbol: /
                     trailing_trivia: []
                   name:
-                    leading_trivia: []
-                    token:
-                      start_position:
-                        bytes: 28
-                        line: 1
-                        character: 29
-                      end_position:
-                        bytes: 37
-                        line: 1
-                        character: 38
-                      token_type:
-                        type: Identifier
-                        identifier: Component
-                    trailing_trivia: []
+                    Name:
+                      leading_trivia: []
+                      token:
+                        start_position:
+                          bytes: 28
+                          line: 1
+                          character: 29
+                        end_position:
+                          bytes: 37
+                          line: 1
+                          character: 38
+                        token_type:
+                          type: Identifier
+                          identifier: Component
+                      trailing_trivia: []
                   closing_bracket:
                     leading_trivia: []
                     token:
