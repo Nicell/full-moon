@@ -262,9 +262,9 @@ impl Default for TableConstructor {
 #[display(fmt = "{}{}{}", "opening_element", "join_vec(children)", "display_option(closing_element)")]
 pub struct LuaxElement {
     #[node(full_range)]
-    opening_element: LuaxOpeningElement,
-    children: Vec<LuaxChild>,
-    closing_element: Option<LuaxClosingElement>,
+    pub opening_element: LuaxOpeningElement,
+    pub children: Vec<LuaxChild>,
+    pub closing_element: Option<LuaxClosingElement>,
 }
 
 /// A Luax opening element
@@ -273,11 +273,11 @@ pub struct LuaxElement {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 #[display(fmt = "{}{}{}{}{}", "opening_bracket", "name", "join_vec(attributes)", "display_option(self_closing)", "closing_bracket")]
 pub struct LuaxOpeningElement {
-    opening_bracket: TokenReference,
-    name: Var,
-    attributes: Vec<LuaxAttribute>,
-    self_closing: Option<TokenReference>,
-    closing_bracket: TokenReference,
+    pub opening_bracket: TokenReference,
+    pub name: Var,
+    pub attributes: Vec<LuaxAttribute>,
+    pub self_closing: Option<TokenReference>,
+    pub closing_bracket: TokenReference,
 }
 
 /// A Luax closing element
@@ -286,10 +286,10 @@ pub struct LuaxOpeningElement {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 #[display(fmt = "{}{}{}{}", "opening_bracket", "slash", "name", "closing_bracket")]
 pub struct LuaxClosingElement {
-    opening_bracket: TokenReference,
-    slash: TokenReference,
-    name: Var,
-    closing_bracket: TokenReference,
+    pub opening_bracket: TokenReference,
+    pub slash: TokenReference,
+    pub name: Var,
+    pub closing_bracket: TokenReference,
 }
 
 /// A Luax attribute
@@ -298,11 +298,11 @@ pub struct LuaxClosingElement {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 #[display(fmt = "{}{}{}{}{}", "name", "equals", "opening_brace", "value", "closing_brace")]
 pub struct LuaxAttribute {
-    name: Var,
-    equals: TokenReference,
-    opening_brace: TokenReference,
-    value: Expression,
-    closing_brace: TokenReference,
+    pub name: Var,
+    pub equals: TokenReference,
+    pub opening_brace: TokenReference,
+    pub value: Expression,
+    pub closing_brace: TokenReference,
 }
 
 /// A Luax fragment
@@ -312,9 +312,9 @@ pub struct LuaxAttribute {
 #[display(fmt = "{}{}{}", "opening_fragment", "join_vec(children)", "closing_fragment")]
 pub struct LuaxFragment {
     #[node(full_range)]
-    opening_fragment: LuaxOpeningFragment,
-    children: Vec<LuaxChild>,
-    closing_fragment: LuaxClosingFragment,
+    pub opening_fragment: LuaxOpeningFragment,
+    pub children: Vec<LuaxChild>,
+    pub closing_fragment: LuaxClosingFragment,
 }
 
 /// A Luax opening fragment
@@ -323,8 +323,8 @@ pub struct LuaxFragment {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 #[display(fmt = "{}{}", "opening_bracket", "closing_bracket")]
 pub struct LuaxOpeningFragment {
-    opening_bracket: TokenReference,
-    closing_bracket: TokenReference,
+    pub opening_bracket: TokenReference,
+    pub closing_bracket: TokenReference,
 }
 
 /// A Luax closing fragment
@@ -333,9 +333,9 @@ pub struct LuaxOpeningFragment {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 #[display(fmt = "{}{}{}", "opening_bracket", "slash", "closing_bracket")]
 pub struct LuaxClosingFragment {
-    opening_bracket: TokenReference,
-    slash: TokenReference,
-    closing_bracket: TokenReference,
+    pub opening_bracket: TokenReference,
+    pub slash: TokenReference,
+    pub closing_bracket: TokenReference,
 }
 
 /// A Luax expression
@@ -344,9 +344,9 @@ pub struct LuaxClosingFragment {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 #[display(fmt = "{}{}{}", "opening_brace", "expression", "closing_brace")]
 pub struct LuaxExpression {
-    opening_brace: TokenReference,
-    expression: Expression,
-    closing_brace: TokenReference,
+    pub opening_brace: TokenReference,
+    pub expression: Expression,
+    pub closing_brace: TokenReference,
 }
 
 /// Children of a LuaX element or fragment
