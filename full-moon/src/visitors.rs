@@ -312,6 +312,9 @@ create_visitor!(ast: {
         visit_luax_opening_element => LuaxOpeningElement,
         visit_luax_closing_element => LuaxClosingElement,
         visit_luax_attribute => LuaxAttribute,
+        visit_luax_fragment => LuaxFragment,
+        visit_luax_opening_fragment => LuaxOpeningFragment,
+        visit_luax_closing_fragment => LuaxClosingFragment,
     }
 }, token: {
     visit_identifier,

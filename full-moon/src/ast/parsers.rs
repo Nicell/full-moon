@@ -348,6 +348,62 @@ define_parser!(ParseLuaxAttribute, LuaxAttribute, |_, state| {
     ))
 });
 
+#[cfg(feature = "luax")]
+struct ParseLuaxFragment;
+#[cfg(feature = "luax")]
+define_parser!(ParseLuaxFragment, LuaxFragment, |_, state| {
+    let (state, opening_fragment) = ParseLuaxOpeningFragment.parse(state)?;
+
+    let (state, children) = ZeroOrMore(ParseLuaxElement).parse(state)?;
+
+    let (state, closing_fragment) = expect!(state, ParseLuaxClosingFragment.parse(state), "expected closing fragment");
+
+    Ok((
+        state,
+        LuaxFragment {
+            opening_fragment,
+            children,
+            closing_fragment,
+        },
+    ))
+}); 
+
+#[cfg(feature = "luax")]
+struct ParseLuaxOpeningFragment;
+#[cfg(feature = "luax")]
+define_parser!(ParseLuaxOpeningFragment, LuaxOpeningFragment, |_, state| {
+    let (state, opening_bracket) = ParseSymbol(Symbol::LessThan).parse(state)?;
+
+    let (state, closing_bracket) = ParseSymbol(Symbol::GreaterThan).parse(state)?;
+
+    Ok((
+        state,
+        LuaxOpeningFragment {
+            opening_bracket,
+            closing_bracket,
+        },
+    ))
+});
+
+#[cfg(feature = "luax")]
+struct ParseLuaxClosingFragment;
+#[cfg(feature = "luax")]
+define_parser!(ParseLuaxClosingFragment, LuaxClosingFragment, |_, state| {
+    let (state, opening_bracket) = ParseSymbol(Symbol::LessThan).parse(state)?;
+
+    let (state, slash) = ParseSymbol(Symbol::Slash).parse(state)?;
+
+    let (state, closing_bracket) = ParseSymbol(Symbol::GreaterThan).parse(state)?;
+
+    Ok((
+        state,
+        LuaxClosingFragment {
+            opening_bracket,
+            slash,
+            closing_bracket,
+        },
+    ))
+});
 
 #[derive(Clone, Debug, PartialEq)]
 struct ParseUnaryExpression;
@@ -523,6 +579,8 @@ define_parser!(ParseValue, Expression, |_, state| parse_first_of!(state, {
     ParseInterpolatedString => Expression::InterpolatedString,
     @#[cfg(feature = "luax")]
     ParseLuaxElement => Expression::LuaxElement,
+    @#[cfg(feature = "luax")]
+    ParseLuaxFragment => Expression::LuaxFragment,
 }));
 
 #[derive(Clone, Debug, Default, PartialEq)]

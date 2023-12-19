@@ -305,6 +305,39 @@ pub struct LuaxAttribute {
     closing_brace: TokenReference,
 }
 
+/// A Luax fragment
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[display(fmt = "{}{}{}", "opening_fragment", "join_vec(children)", "closing_fragment")]
+pub struct LuaxFragment {
+    #[node(full_range)]
+    opening_fragment: LuaxOpeningFragment,
+    children: Vec<LuaxElement>,
+    closing_fragment: LuaxClosingFragment,
+}
+
+/// A Luax opening fragment
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[display(fmt = "{}{}", "opening_bracket", "closing_bracket")]
+pub struct LuaxOpeningFragment {
+    opening_bracket: TokenReference,
+    closing_bracket: TokenReference,
+}
+
+/// A Luax closing fragment
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[display(fmt = "{}{}{}", "opening_bracket", "slash", "closing_bracket")]
+pub struct LuaxClosingFragment {
+    opening_bracket: TokenReference,
+    slash: TokenReference,
+    closing_bracket: TokenReference,
+}
+
 /// An expression, mostly useful for getting values
 #[derive(Clone, Debug, Display, PartialEq, Node)]
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
@@ -340,6 +373,11 @@ pub enum Expression {
     #[cfg(feature = "luax")]
     #[display(fmt = "{}", "_0")]
     LuaxElement(LuaxElement),
+
+    /// A Luax fragment
+    #[cfg(feature = "luax")]
+    #[display(fmt = "{}", "_0")]
+    LuaxFragment(LuaxFragment),
 
     /// A unary operation, such as `#list`
     #[display(fmt = "{unop}{expression}")]

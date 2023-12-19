@@ -130,6 +130,11 @@ impl Visit for Expression {
                 element.visit(visitor);
             }
 
+            #[cfg(feature = "luax")]
+            Expression::LuaxFragment(fragment) => {
+                fragment.visit(visitor);
+            }
+
             #[cfg(feature = "roblox")]
             Expression::TypeAssertion {
                 expression,
@@ -206,6 +211,9 @@ impl VisitMut for Expression {
 
             #[cfg(feature = "luax")]
             Expression::LuaxElement(element) => Expression::LuaxElement(element.visit_mut(visitor)),
+
+            #[cfg(feature = "luax")]
+            Expression::LuaxFragment(fragment) => Expression::LuaxFragment(fragment.visit_mut(visitor)),
 
             #[cfg(feature = "roblox")]
             Expression::TypeAssertion {
