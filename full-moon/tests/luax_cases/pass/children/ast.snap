@@ -86,71 +86,72 @@ last_stmt:
                         symbol: ">"
                     trailing_trivia: []
                 children:
-                  - opening_element:
-                      opening_bracket:
-                        leading_trivia: []
-                        token:
-                          start_position:
-                            bytes: 18
-                            line: 1
-                            character: 19
-                          end_position:
-                            bytes: 19
-                            line: 1
-                            character: 20
-                          token_type:
-                            type: Symbol
-                            symbol: "<"
-                        trailing_trivia: []
-                      name:
-                        Name:
+                  - Element:
+                      opening_element:
+                        opening_bracket:
                           leading_trivia: []
                           token:
                             start_position:
+                              bytes: 18
+                              line: 1
+                              character: 19
+                            end_position:
                               bytes: 19
                               line: 1
                               character: 20
-                            end_position:
+                            token_type:
+                              type: Symbol
+                              symbol: "<"
+                          trailing_trivia: []
+                        name:
+                          Name:
+                            leading_trivia: []
+                            token:
+                              start_position:
+                                bytes: 19
+                                line: 1
+                                character: 20
+                              end_position:
+                                bytes: 24
+                                line: 1
+                                character: 25
+                              token_type:
+                                type: Identifier
+                                identifier: Child
+                            trailing_trivia: []
+                        attributes: []
+                        self_closing:
+                          leading_trivia: []
+                          token:
+                            start_position:
                               bytes: 24
                               line: 1
                               character: 25
+                            end_position:
+                              bytes: 25
+                              line: 1
+                              character: 26
                             token_type:
-                              type: Identifier
-                              identifier: Child
+                              type: Symbol
+                              symbol: /
                           trailing_trivia: []
-                      attributes: []
-                      self_closing:
-                        leading_trivia: []
-                        token:
-                          start_position:
-                            bytes: 24
-                            line: 1
-                            character: 25
-                          end_position:
-                            bytes: 25
-                            line: 1
-                            character: 26
-                          token_type:
-                            type: Symbol
-                            symbol: /
-                        trailing_trivia: []
-                      closing_bracket:
-                        leading_trivia: []
-                        token:
-                          start_position:
-                            bytes: 25
-                            line: 1
-                            character: 26
-                          end_position:
-                            bytes: 26
-                            line: 1
-                            character: 27
-                          token_type:
-                            type: Symbol
-                            symbol: ">"
-                        trailing_trivia: []
-                    children: []
-                    closing_element: ~
+                        closing_bracket:
+                          leading_trivia: []
+                          token:
+                            start_position:
+                              bytes: 25
+                              line: 1
+                              character: 26
+                            end_position:
+                              bytes: 26
+                              line: 1
+                              character: 27
+                            token_type:
+                              type: Symbol
+                              symbol: ">"
+                          trailing_trivia: []
+                      children: []
+                      closing_element: ~
                 closing_element:
                   opening_bracket:
                     leading_trivia: []

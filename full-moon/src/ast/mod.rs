@@ -263,7 +263,7 @@ impl Default for TableConstructor {
 pub struct LuaxElement {
     #[node(full_range)]
     opening_element: LuaxOpeningElement,
-    children: Vec<LuaxElement>,
+    children: Vec<LuaxChild>,
     closing_element: Option<LuaxClosingElement>,
 }
 
@@ -313,7 +313,7 @@ pub struct LuaxAttribute {
 pub struct LuaxFragment {
     #[node(full_range)]
     opening_fragment: LuaxOpeningFragment,
-    children: Vec<LuaxElement>,
+    children: Vec<LuaxChild>,
     closing_fragment: LuaxClosingFragment,
 }
 
@@ -336,6 +336,36 @@ pub struct LuaxClosingFragment {
     opening_bracket: TokenReference,
     slash: TokenReference,
     closing_bracket: TokenReference,
+}
+
+/// A Luax expression
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[display(fmt = "{}{}{}", "opening_brace", "expression", "closing_brace")]
+pub struct LuaxExpression {
+    opening_brace: TokenReference,
+    expression: Expression,
+    closing_brace: TokenReference,
+}
+
+/// Children of a LuaX element or fragment
+#[cfg(feature = "luax")]
+#[derive(Clone, Debug, Display, PartialEq, Node, Visit)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[non_exhaustive]
+pub enum LuaxChild {
+    /// A Luax element
+    #[display(fmt = "{}", "_0")]
+    Element(LuaxElement),
+
+    /// A Luax fragment
+    #[display(fmt = "{}", "_0")]
+    Fragment(LuaxFragment),
+
+    /// An expression
+    #[display(fmt = "{}", "_0")]
+    Expression(LuaxExpression),
 }
 
 /// An expression, mostly useful for getting values

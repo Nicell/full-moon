@@ -122,180 +122,182 @@ last_stmt:
                               type: Whitespace
                               characters: "\n"
                     children:
-                      - opening_element:
-                          opening_bracket:
-                            leading_trivia:
-                              - start_position:
-                                  bytes: 11
-                                  line: 2
-                                  character: 1
-                                end_position:
+                      - Element:
+                          opening_element:
+                            opening_bracket:
+                              leading_trivia:
+                                - start_position:
+                                    bytes: 11
+                                    line: 2
+                                    character: 1
+                                  end_position:
+                                    bytes: 12
+                                    line: 2
+                                    character: 2
+                                  token_type:
+                                    type: Whitespace
+                                    characters: "\t"
+                              token:
+                                start_position:
                                   bytes: 12
                                   line: 2
                                   character: 2
-                                token_type:
-                                  type: Whitespace
-                                  characters: "\t"
-                            token:
-                              start_position:
-                                bytes: 12
-                                line: 2
-                                character: 2
-                              end_position:
-                                bytes: 13
-                                line: 2
-                                character: 3
-                              token_type:
-                                type: Symbol
-                                symbol: "<"
-                            trailing_trivia: []
-                          name:
-                            Name:
-                              leading_trivia: []
-                              token:
-                                start_position:
+                                end_position:
                                   bytes: 13
                                   line: 2
                                   character: 3
-                                end_position:
-                                  bytes: 19
-                                  line: 2
-                                  character: 9
                                 token_type:
-                                  type: Identifier
-                                  identifier: Child1
+                                  type: Symbol
+                                  symbol: "<"
                               trailing_trivia: []
-                          attributes: []
-                          self_closing:
-                            leading_trivia: []
-                            token:
-                              start_position:
-                                bytes: 19
-                                line: 2
-                                character: 9
-                              end_position:
-                                bytes: 20
-                                line: 2
-                                character: 10
-                              token_type:
-                                type: Symbol
-                                symbol: /
-                            trailing_trivia: []
-                          closing_bracket:
-                            leading_trivia: []
-                            token:
-                              start_position:
-                                bytes: 20
-                                line: 2
-                                character: 10
-                              end_position:
-                                bytes: 21
-                                line: 2
-                                character: 11
-                              token_type:
-                                type: Symbol
-                                symbol: ">"
-                            trailing_trivia:
-                              - start_position:
-                                  bytes: 21
-                                  line: 2
-                                  character: 11
-                                end_position:
-                                  bytes: 22
-                                  line: 2
-                                  character: 11
-                                token_type:
-                                  type: Whitespace
-                                  characters: "\n"
-                        children: []
-                        closing_element: ~
-                      - opening_element:
-                          opening_bracket:
-                            leading_trivia:
-                              - start_position:
-                                  bytes: 22
-                                  line: 3
-                                  character: 1
-                                end_position:
-                                  bytes: 23
-                                  line: 3
-                                  character: 2
-                                token_type:
-                                  type: Whitespace
-                                  characters: "\t"
-                            token:
-                              start_position:
-                                bytes: 23
-                                line: 3
-                                character: 2
-                              end_position:
-                                bytes: 24
-                                line: 3
-                                character: 3
-                              token_type:
-                                type: Symbol
-                                symbol: "<"
-                            trailing_trivia: []
-                          name:
-                            Name:
+                            name:
+                              Name:
+                                leading_trivia: []
+                                token:
+                                  start_position:
+                                    bytes: 13
+                                    line: 2
+                                    character: 3
+                                  end_position:
+                                    bytes: 19
+                                    line: 2
+                                    character: 9
+                                  token_type:
+                                    type: Identifier
+                                    identifier: Child1
+                                trailing_trivia: []
+                            attributes: []
+                            self_closing:
                               leading_trivia: []
                               token:
                                 start_position:
+                                  bytes: 19
+                                  line: 2
+                                  character: 9
+                                end_position:
+                                  bytes: 20
+                                  line: 2
+                                  character: 10
+                                token_type:
+                                  type: Symbol
+                                  symbol: /
+                              trailing_trivia: []
+                            closing_bracket:
+                              leading_trivia: []
+                              token:
+                                start_position:
+                                  bytes: 20
+                                  line: 2
+                                  character: 10
+                                end_position:
+                                  bytes: 21
+                                  line: 2
+                                  character: 11
+                                token_type:
+                                  type: Symbol
+                                  symbol: ">"
+                              trailing_trivia:
+                                - start_position:
+                                    bytes: 21
+                                    line: 2
+                                    character: 11
+                                  end_position:
+                                    bytes: 22
+                                    line: 2
+                                    character: 11
+                                  token_type:
+                                    type: Whitespace
+                                    characters: "\n"
+                          children: []
+                          closing_element: ~
+                      - Element:
+                          opening_element:
+                            opening_bracket:
+                              leading_trivia:
+                                - start_position:
+                                    bytes: 22
+                                    line: 3
+                                    character: 1
+                                  end_position:
+                                    bytes: 23
+                                    line: 3
+                                    character: 2
+                                  token_type:
+                                    type: Whitespace
+                                    characters: "\t"
+                              token:
+                                start_position:
+                                  bytes: 23
+                                  line: 3
+                                  character: 2
+                                end_position:
                                   bytes: 24
                                   line: 3
                                   character: 3
-                                end_position:
+                                token_type:
+                                  type: Symbol
+                                  symbol: "<"
+                              trailing_trivia: []
+                            name:
+                              Name:
+                                leading_trivia: []
+                                token:
+                                  start_position:
+                                    bytes: 24
+                                    line: 3
+                                    character: 3
+                                  end_position:
+                                    bytes: 30
+                                    line: 3
+                                    character: 9
+                                  token_type:
+                                    type: Identifier
+                                    identifier: Child2
+                                trailing_trivia: []
+                            attributes: []
+                            self_closing:
+                              leading_trivia: []
+                              token:
+                                start_position:
                                   bytes: 30
                                   line: 3
                                   character: 9
+                                end_position:
+                                  bytes: 31
+                                  line: 3
+                                  character: 10
                                 token_type:
-                                  type: Identifier
-                                  identifier: Child2
+                                  type: Symbol
+                                  symbol: /
                               trailing_trivia: []
-                          attributes: []
-                          self_closing:
-                            leading_trivia: []
-                            token:
-                              start_position:
-                                bytes: 30
-                                line: 3
-                                character: 9
-                              end_position:
-                                bytes: 31
-                                line: 3
-                                character: 10
-                              token_type:
-                                type: Symbol
-                                symbol: /
-                            trailing_trivia: []
-                          closing_bracket:
-                            leading_trivia: []
-                            token:
-                              start_position:
-                                bytes: 31
-                                line: 3
-                                character: 10
-                              end_position:
-                                bytes: 32
-                                line: 3
-                                character: 11
-                              token_type:
-                                type: Symbol
-                                symbol: ">"
-                            trailing_trivia:
-                              - start_position:
+                            closing_bracket:
+                              leading_trivia: []
+                              token:
+                                start_position:
+                                  bytes: 31
+                                  line: 3
+                                  character: 10
+                                end_position:
                                   bytes: 32
                                   line: 3
                                   character: 11
-                                end_position:
-                                  bytes: 33
-                                  line: 3
-                                  character: 11
                                 token_type:
-                                  type: Whitespace
-                                  characters: "\n"
-                        children: []
-                        closing_element: ~
+                                  type: Symbol
+                                  symbol: ">"
+                              trailing_trivia:
+                                - start_position:
+                                    bytes: 32
+                                    line: 3
+                                    character: 11
+                                  end_position:
+                                    bytes: 33
+                                    line: 3
+                                    character: 11
+                                  token_type:
+                                    type: Whitespace
+                                    characters: "\n"
+                          children: []
+                          closing_element: ~
                     closing_fragment:
                       opening_bracket:
                         leading_trivia: []

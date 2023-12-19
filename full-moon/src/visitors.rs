@@ -315,6 +315,8 @@ create_visitor!(ast: {
         visit_luax_fragment => LuaxFragment,
         visit_luax_opening_fragment => LuaxOpeningFragment,
         visit_luax_closing_fragment => LuaxClosingFragment,
+        visit_luax_expression => LuaxExpression,
+        visit_luax_child => LuaxChild,
     }
 }, token: {
     visit_identifier,
