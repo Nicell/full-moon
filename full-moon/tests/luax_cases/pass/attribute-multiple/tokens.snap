@@ -1,0 +1,247 @@
+---
+source: full-moon/tests/pass_cases.rs
+expression: tokens
+input_file: full-moon/tests/luax_cases/pass/attribute-multiple
+---
+- start_position:
+    bytes: 0
+    line: 1
+    character: 1
+  end_position:
+    bytes: 6
+    line: 1
+    character: 7
+  token_type:
+    type: Symbol
+    symbol: return
+- start_position:
+    bytes: 6
+    line: 1
+    character: 7
+  end_position:
+    bytes: 7
+    line: 1
+    character: 8
+  token_type:
+    type: Whitespace
+    characters: " "
+- start_position:
+    bytes: 7
+    line: 1
+    character: 8
+  end_position:
+    bytes: 8
+    line: 1
+    character: 9
+  token_type:
+    type: Symbol
+    symbol: "<"
+- start_position:
+    bytes: 8
+    line: 1
+    character: 9
+  end_position:
+    bytes: 17
+    line: 1
+    character: 18
+  token_type:
+    type: Identifier
+    identifier: Component
+- start_position:
+    bytes: 17
+    line: 1
+    character: 18
+  end_position:
+    bytes: 18
+    line: 1
+    character: 19
+  token_type:
+    type: Whitespace
+    characters: " "
+- start_position:
+    bytes: 18
+    line: 1
+    character: 19
+  end_position:
+    bytes: 23
+    line: 1
+    character: 24
+  token_type:
+    type: Identifier
+    identifier: attr1
+- start_position:
+    bytes: 23
+    line: 1
+    character: 24
+  end_position:
+    bytes: 24
+    line: 1
+    character: 25
+  token_type:
+    type: Symbol
+    symbol: "="
+- start_position:
+    bytes: 24
+    line: 1
+    character: 25
+  end_position:
+    bytes: 25
+    line: 1
+    character: 26
+  token_type:
+    type: Symbol
+    symbol: "{"
+- start_position:
+    bytes: 25
+    line: 1
+    character: 26
+  end_position:
+    bytes: 26
+    line: 1
+    character: 27
+  token_type:
+    type: Number
+    text: "1"
+- start_position:
+    bytes: 26
+    line: 1
+    character: 27
+  end_position:
+    bytes: 27
+    line: 1
+    character: 28
+  token_type:
+    type: Symbol
+    symbol: "}"
+- start_position:
+    bytes: 27
+    line: 1
+    character: 28
+  end_position:
+    bytes: 28
+    line: 1
+    character: 29
+  token_type:
+    type: Whitespace
+    characters: " "
+- start_position:
+    bytes: 28
+    line: 1
+    character: 29
+  end_position:
+    bytes: 33
+    line: 1
+    character: 34
+  token_type:
+    type: Identifier
+    identifier: attr2
+- start_position:
+    bytes: 33
+    line: 1
+    character: 34
+  end_position:
+    bytes: 34
+    line: 1
+    character: 35
+  token_type:
+    type: Symbol
+    symbol: "="
+- start_position:
+    bytes: 34
+    line: 1
+    character: 35
+  end_position:
+    bytes: 35
+    line: 1
+    character: 36
+  token_type:
+    type: Symbol
+    symbol: "{"
+- start_position:
+    bytes: 35
+    line: 1
+    character: 36
+  end_position:
+    bytes: 36
+    line: 1
+    character: 37
+  token_type:
+    type: Number
+    text: "2"
+- start_position:
+    bytes: 36
+    line: 1
+    character: 37
+  end_position:
+    bytes: 37
+    line: 1
+    character: 38
+  token_type:
+    type: Symbol
+    symbol: "}"
+- start_position:
+    bytes: 37
+    line: 1
+    character: 38
+  end_position:
+    bytes: 38
+    line: 1
+    character: 39
+  token_type:
+    type: Symbol
+    symbol: ">"
+- start_position:
+    bytes: 38
+    line: 1
+    character: 39
+  end_position:
+    bytes: 39
+    line: 1
+    character: 40
+  token_type:
+    type: Symbol
+    symbol: "<"
+- start_position:
+    bytes: 39
+    line: 1
+    character: 40
+  end_position:
+    bytes: 40
+    line: 1
+    character: 41
+  token_type:
+    type: Symbol
+    symbol: /
+- start_position:
+    bytes: 40
+    line: 1
+    character: 41
+  end_position:
+    bytes: 49
+    line: 1
+    character: 50
+  token_type:
+    type: Identifier
+    identifier: Component
+- start_position:
+    bytes: 49
+    line: 1
+    character: 50
+  end_position:
+    bytes: 50
+    line: 1
+    character: 51
+  token_type:
+    type: Symbol
+    symbol: ">"
+- start_position:
+    bytes: 50
+    line: 1
+    character: 51
+  end_position:
+    bytes: 50
+    line: 1
+    character: 51
+  token_type:
+    type: Eof
+

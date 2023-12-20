@@ -1,0 +1,229 @@
+---
+source: full-moon/tests/pass_cases.rs
+expression: ast.nodes()
+input_file: full-moon/tests/luax_cases/pass/children
+---
+stmts: []
+last_stmt:
+  - Return:
+      token:
+        leading_trivia: []
+        token:
+          start_position:
+            bytes: 0
+            line: 1
+            character: 1
+          end_position:
+            bytes: 6
+            line: 1
+            character: 7
+          token_type:
+            type: Symbol
+            symbol: return
+        trailing_trivia:
+          - start_position:
+              bytes: 6
+              line: 1
+              character: 7
+            end_position:
+              bytes: 7
+              line: 1
+              character: 8
+            token_type:
+              type: Whitespace
+              characters: " "
+      returns:
+        pairs:
+          - End:
+              LuaxElement:
+                opening_element:
+                  opening_bracket:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 7
+                        line: 1
+                        character: 8
+                      end_position:
+                        bytes: 8
+                        line: 1
+                        character: 9
+                      token_type:
+                        type: Symbol
+                        symbol: "<"
+                    trailing_trivia: []
+                  name:
+                    Name:
+                      leading_trivia: []
+                      token:
+                        start_position:
+                          bytes: 8
+                          line: 1
+                          character: 9
+                        end_position:
+                          bytes: 17
+                          line: 1
+                          character: 18
+                        token_type:
+                          type: Identifier
+                          identifier: Component
+                      trailing_trivia: []
+                  attributes: []
+                  self_closing: ~
+                  closing_bracket:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 17
+                        line: 1
+                        character: 18
+                      end_position:
+                        bytes: 18
+                        line: 1
+                        character: 19
+                      token_type:
+                        type: Symbol
+                        symbol: ">"
+                    trailing_trivia: []
+                children:
+                  - Element:
+                      opening_element:
+                        opening_bracket:
+                          leading_trivia: []
+                          token:
+                            start_position:
+                              bytes: 18
+                              line: 1
+                              character: 19
+                            end_position:
+                              bytes: 19
+                              line: 1
+                              character: 20
+                            token_type:
+                              type: Symbol
+                              symbol: "<"
+                          trailing_trivia: []
+                        name:
+                          Name:
+                            leading_trivia: []
+                            token:
+                              start_position:
+                                bytes: 19
+                                line: 1
+                                character: 20
+                              end_position:
+                                bytes: 24
+                                line: 1
+                                character: 25
+                              token_type:
+                                type: Identifier
+                                identifier: Child
+                            trailing_trivia: []
+                        attributes: []
+                        self_closing:
+                          leading_trivia: []
+                          token:
+                            start_position:
+                              bytes: 24
+                              line: 1
+                              character: 25
+                            end_position:
+                              bytes: 25
+                              line: 1
+                              character: 26
+                            token_type:
+                              type: Symbol
+                              symbol: /
+                          trailing_trivia: []
+                        closing_bracket:
+                          leading_trivia: []
+                          token:
+                            start_position:
+                              bytes: 25
+                              line: 1
+                              character: 26
+                            end_position:
+                              bytes: 26
+                              line: 1
+                              character: 27
+                            token_type:
+                              type: Symbol
+                              symbol: ">"
+                          trailing_trivia: []
+                      children: []
+                      closing_element: ~
+                closing_element:
+                  opening_bracket:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 26
+                        line: 1
+                        character: 27
+                      end_position:
+                        bytes: 27
+                        line: 1
+                        character: 28
+                      token_type:
+                        type: Symbol
+                        symbol: "<"
+                    trailing_trivia: []
+                  slash:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 27
+                        line: 1
+                        character: 28
+                      end_position:
+                        bytes: 28
+                        line: 1
+                        character: 29
+                      token_type:
+                        type: Symbol
+                        symbol: /
+                    trailing_trivia: []
+                  name:
+                    Name:
+                      leading_trivia: []
+                      token:
+                        start_position:
+                          bytes: 28
+                          line: 1
+                          character: 29
+                        end_position:
+                          bytes: 37
+                          line: 1
+                          character: 38
+                        token_type:
+                          type: Identifier
+                          identifier: Component
+                      trailing_trivia: []
+                  closing_bracket:
+                    leading_trivia: []
+                    token:
+                      start_position:
+                        bytes: 37
+                        line: 1
+                        character: 38
+                      end_position:
+                        bytes: 38
+                        line: 1
+                        character: 39
+                      token_type:
+                        type: Symbol
+                        symbol: ">"
+                    trailing_trivia:
+                      - start_position:
+                          bytes: 38
+                          line: 1
+                          character: 39
+                        end_position:
+                          bytes: 39
+                          line: 1
+                          character: 39
+                        token_type:
+                          type: Whitespace
+                          characters: "\n"
+  - ~
+

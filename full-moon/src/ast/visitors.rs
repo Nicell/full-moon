@@ -125,6 +125,16 @@ impl Visit for Expression {
                 table_constructor.visit(visitor);
             }
 
+            #[cfg(feature = "luax")]
+            Expression::LuaxElement(element) => {
+                element.visit(visitor);
+            }
+
+            #[cfg(feature = "luax")]
+            Expression::LuaxFragment(fragment) => {
+                fragment.visit(visitor);
+            }
+
             #[cfg(feature = "roblox")]
             Expression::TypeAssertion {
                 expression,
@@ -198,6 +208,12 @@ impl VisitMut for Expression {
             Expression::TableConstructor(table_constructor) => {
                 Expression::TableConstructor(table_constructor.visit_mut(visitor))
             }
+
+            #[cfg(feature = "luax")]
+            Expression::LuaxElement(element) => Expression::LuaxElement(element.visit_mut(visitor)),
+
+            #[cfg(feature = "luax")]
+            Expression::LuaxFragment(fragment) => Expression::LuaxFragment(fragment.visit_mut(visitor)),
 
             #[cfg(feature = "roblox")]
             Expression::TypeAssertion {
